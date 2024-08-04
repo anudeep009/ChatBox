@@ -25,7 +25,7 @@ function MessageInput() {
       />
       <button
         onClick={handleSendMessage}
-        className={`ml-2 px-4 py-2 rounded-md ${isDarkMode ? 'bg-[#4f4f4f] text-white hover:bg-[#696969]' : 'bg-[#6366f1] text-white hover:bg-[#5A7BC4]'}`}
+        className={`ml-2 px-4 py-2 rounded-md ${isDarkMode ? 'bg-[#4f4f4f] text-white hover:bg-[#393939]' : 'bg-[#6366f1] text-white hover:bg-[#5A7BC4]'}`}
       >
         Send
       </button>
