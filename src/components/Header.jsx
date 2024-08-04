@@ -1,42 +1,70 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon, faUser, faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
 function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const [menuOpen, setMenuOpen] = useState(false);  
 
   return (
-    <div className={`flex flex-col h-screen w-full ${isDarkMode ? "bg-[#1e1e1e] text-white" : "bg-[#f5f5f5] text-black"}`}>
-      <header className="flex items-center justify-between bg-[#6366f1] text-white px-4 py-3 shadow">
-        <div className="text-xl font-bold">Chat Box</div>
-        <button
-          className={`p-2 rounded-full transition-colors ${
-            isDarkMode
-              ? "bg-white text-[#6366f1] hover:bg-[#6366f1]/80"
-              : "bg-[#6366f1] text-white hover:bg-[#6366f1]/80"
-          }`}
-          onClick={() => setIsDarkMode(!isDarkMode)}
-        >
-          {isDarkMode ? <FontAwesomeIcon icon={faSun} className="w-5 h-5" /> : <FontAwesomeIcon icon={faMoon} className="w-5 h-5" />}
-        </button>
-      </header>
-      <div className="flex flex-1 overflow-auto">
-        <div className={`bg-[#ffffff] text-[#4b5563] w-64 border-r ${isDarkMode ? "border-[#2d3748]" : "border-[#e5e7eb]"}`}>
-          <div className="px-4 py-3 border-b">
+    <header className={`w-full px-4 py-3 shadow ${isDarkMode ? 'bg-[#1e1e1e] text-white' : 'bg-[#6366f1] text-white'}`}>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          <div className="text-xl font-bold">Chat Box</div>
+          <nav className="hidden md:flex space-x-4">
+            <a href="#" className="hover:underline">Chats</a>
+            <a href="#" className="hover:underline">Contacts</a>
+          </nav>
+        </div>
+        <div className="flex items-center space-x-4">
+          <div className="relative hidden md:block">
             <input
               type="text"
-              placeholder="Search users"
-              className={`w-full px-3 py-2 rounded-md bg-[#f3f4f6]/10 border-none focus:outline-none focus:ring-2 focus:ring-[#6366f1] ${
-                isDarkMode ? "text-[#f3f4f6] placeholder-[#f3f4f6]/50" : "text-[#4b5563] placeholder-[#4b5563]/50"
-              }`}
+              placeholder="Search chats..."
+              className={`px-3 py-2 rounded-md border ${isDarkMode ? 'bg-[#2d2d2d] text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`}
             />
+            <FontAwesomeIcon icon={faSearch} className="absolute top-2.5 right-3 text-gray-400" />
           </div>
-        </div>
-        <div className="flex-1 p-4">
-          {/* Chat content will go here */}
+          <button
+            className={`p-2 rounded-full transition-colors ${
+              isDarkMode
+                ? 'bg-white text-[#6366f1] hover:bg-gray-200'
+                : 'bg-[#6366f1] text-white hover:bg-[#6366f1]/80'
+            }`}
+            onClick={toggleDarkMode}
+          >
+            {isDarkMode ? <FontAwesomeIcon icon={faSun} className="w-5 h-5 text-black" /> : <FontAwesomeIcon icon={faMoon} className="w-5 h-5" />}
+          </button>
+          <FontAwesomeIcon icon={faUser} className="w-6 h-6 hidden md:block" />
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <FontAwesomeIcon icon={faBars} className="w-6 h-6" />
+          </button>
         </div>
       </div>
-    </div>
+      {menuOpen && (
+        <div className="flex flex-col mt-2 space-y-2 md:hidden">
+          <div className="flex justify-between items-center">
+            <nav className="flex space-x-4">
+              <a href="#" className="hover:underline">Chats</a>
+              <a href="#" className="hover:underline">Contacts</a>
+            </nav>
+            <FontAwesomeIcon icon={faUser} className="w-6 h-6" />
+          </div>
+          <div className="relative mt-2">
+            <input
+              type="text"
+              placeholder="Search chats..."
+              className={`w-full px-3 py-2 rounded-md border ${isDarkMode ? 'bg-[#2d2d2d] text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`}
+            />
+            <FontAwesomeIcon icon={faSearch} className="absolute top-2.5 right-3 text-gray-400" />
+          </div>
+        </div>
+      )}
+    </header>
   );
 }
 
