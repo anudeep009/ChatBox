@@ -16,7 +16,7 @@ function MessageDisplayArea({ messages }) {
   return (
     <div
       className={`flex-1 p-4 overflow-y-auto ${isDarkMode ? 'bg-[#2d2d2d] text-white' : 'bg-white text-black'}`}
-      style={{ height: 'calc(100vh - 240px)' }} 
+      style={{ height: 'calc(100vh - 240px)', scrollbarWidth: 'none' }} 
     >
       {messages.length === 0 ? (
         <div className="text-gray-500">No messages yet.</div>
@@ -34,6 +34,17 @@ function MessageDisplayArea({ messages }) {
           <div ref={messagesEndRef} />
         </div>
       )}
+      <style jsx>{`
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .flex-1::-webkit-scrollbar {
+          display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .flex-1 {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+      `}</style>
     </div>
   );
 }
