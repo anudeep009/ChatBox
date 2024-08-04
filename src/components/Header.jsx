@@ -8,13 +8,13 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);  
 
   return (
-    <header className={`w-full px-4 py-3 shadow ${isDarkMode ? 'bg-[#1e1e1e] text-white' : 'bg-[#6366f1] text-white'}`}>
+    <header className={` w-full px-4 py-3 shadow ${isDarkMode ? 'bg-[#1e1e1e] text-white' : 'bg-[#6366f1] text-white'}`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="text-xl font-bold">Chat Box</div>
           <nav className="hidden md:flex space-x-4">
-            <a href="#" className="hover:underline">Chats</a>
-            <a href="#" className="hover:underline">Contacts</a>
+            <a href="#">Chats</a>
+            <a href="#">Contacts</a>
           </nav>
         </div>
         <div className="flex items-center space-x-4">
@@ -49,8 +49,8 @@ function Header() {
         <div className="flex flex-col mt-2 space-y-2 md:hidden">
           <div className="flex justify-between items-center">
             <nav className="flex space-x-4">
-              <a href="#" className="hover:underline">Chats</a>
-              <a href="#" className="hover:underline">Contacts</a>
+              <a href="#">Chats</a>
+              <a href="#">Contacts</a>
             </nav>
             <FontAwesomeIcon icon={faUser} className="w-6 h-6" />
           </div>

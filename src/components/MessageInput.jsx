@@ -25,9 +25,9 @@ function MessageInput() {
       />
       <button
         onClick={handleSendMessage}
-        className={`ml-2 p-2 rounded-full ${isDarkMode ? 'bg-[#6366f1] text-white hover:bg-[#4f4f4f]' : 'bg-[#6366f1] text-white hover:bg-[#4f4f4f]'}`}
+        className={`ml-2 px-4 py-2 rounded-md ${isDarkMode ? 'bg-[#4f4f4f] text-white hover:bg-[#696969]' : 'bg-[#6366f1] text-white hover:bg-[#5A7BC4]'}`}
       >
-        <FontAwesomeIcon icon={faPaperPlane} />
+        Send
       </button>
     </div>
   );
