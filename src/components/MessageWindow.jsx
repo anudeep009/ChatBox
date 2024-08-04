@@ -3,8 +3,9 @@ import MessageInput from './MessageInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { useDarkMode } from '../contexts/DarkModeContext';
+import MessageDisplayArea from './MessageDisplayArea';
 
-function MessageWindow({ selectedChat }) {
+function MessageWindow({ selectedChat, messages }) {
   const { isDarkMode } = useDarkMode();
 
   return (
@@ -17,7 +18,7 @@ function MessageWindow({ selectedChat }) {
               {selectedChat.name}
             </div>
           </div>
-          {/* Message display area would go here */}
+          <MessageDisplayArea messages={messages} />
           <MessageInput />
         </>
       ) : (

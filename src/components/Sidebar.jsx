@@ -10,12 +10,10 @@ function Sidebar({ selectChat }) {
     { id: 1, name: 'John Doe' },
     { id: 2, name: 'Jane Smith' },
     { id: 3, name: 'Mike Johnson' },
-    { id: 1, name: 'John Doe' },
-    { id: 2, name: 'Jane Smith' },
-    { id: 3, name: 'Mike Johnson' },
-    { id: 1, name: 'John Doe' },
-    { id: 2, name: 'Jane Smith' }
-    // More chat items...
+    { id: 4, name: 'Alice Cooper' },
+    { id: 5, name: 'Bob Brown' },
+    { id: 6, name: 'Carol Davis' },
+    // Ensure each item has a unique `id`
   ];
 
   return (
@@ -26,8 +24,8 @@ function Sidebar({ selectChat }) {
       <ul className="space-y-2">
         {recentChats.map((chat) => (
           <li
-            key={chat.id}
-            className={`flex items-center space-x-3 p-2 rounded-md cursor-pointer ${isDarkMode ? 'bg-[#2d2d2d] text-white' : 'bg-[#6987C9] space-x-2 p-2 rounded-md hover:bg-[#5A7BC4] '}`}
+            key={chat.id}  // Ensure each key is unique
+            className={`flex items-center space-x-3 p-2 rounded-md cursor-pointer ${isDarkMode ? 'bg-[#2d2d2d] text-white' : 'bg-[#6987C9] hover:bg-[#5A7BC4]'}`}
             onClick={() => selectChat(chat)}
             aria-label={`Chat with ${chat.name}`}
           >
