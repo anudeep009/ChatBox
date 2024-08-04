@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
 function MessageDisplayArea({ messages }) {
   const { isDarkMode } = useDarkMode();
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
     <div
       className={`flex-1 p-4 overflow-y-auto ${isDarkMode ? 'bg-[#2d2d2d] text-white' : 'bg-white text-black'}`}
+      style={{ height: 'calc(100vh - 240px)' }} 
     >
       {messages.length === 0 ? (
         <div className="text-gray-500">No messages yet.</div>
@@ -21,6 +31,7 @@ function MessageDisplayArea({ messages }) {
               <span className="text-xs text-gray-500">{message.timestamp}</span>
             </div>
           ))}
+          <div ref={messagesEndRef} />
         </div>
       )}
     </div>

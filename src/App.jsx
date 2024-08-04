@@ -8,6 +8,18 @@ function App() {
   const [messages, setMessages] = useState([
     { text: 'Hello!', timestamp: '10:00 AM' },
     { text: 'Hi there!', timestamp: '10:01 AM' },
+    { text: 'Hello!', timestamp: '10:00 AM' },
+    { text: 'Hi there!', timestamp: '10:01 AM' },
+    { text: 'Hello!', timestamp: '10:00 AM' },
+    { text: 'Hi there!', timestamp: '10:01 AM' },
+    { text: 'Hello!', timestamp: '10:00 AM' },
+    { text: 'Hi there!', timestamp: '10:01 AM' },
+    { text: 'Hello!', timestamp: '10:00 AM' },
+    { text: 'Hi there!', timestamp: '10:01 AM' },
+    { text: 'Hello!', timestamp: '10:00 AM' },
+    { text: 'Hi there!', timestamp: '10:01 AM' },
+    { text: 'Hello!', timestamp: '10:00 AM' },
+    { text: 'Hi there!', timestamp: '10:01 AM' },
     // More messages...
   ]);
 
